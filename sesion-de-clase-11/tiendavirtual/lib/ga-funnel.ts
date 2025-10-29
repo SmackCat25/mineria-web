@@ -42,6 +42,7 @@ export const GA_FUNNEL_EVENTS = {
   LEAD: 'lead', // Oportunidad de venta
   SALE: 'sale', // Venta generada
   WEB_TRAFFIC: 'web_traffic', // Tráfico web
+  DELETE_PRODUCT: 'delete_product'
 };
 // Objetivo: Conocer el tráfico web
 export function trackWebTraffic() {
@@ -95,6 +96,11 @@ export function trackPlaceOrder(total: number) {
   gaEvent({ action: GA_FUNNEL_EVENTS.PLACE_ORDER, params: { total } });
 }
 
-export function trackOrderSuccess(orderId: number) {
+export function trackOrderSuccess (orderId: number) {
   gaEvent({ action: GA_FUNNEL_EVENTS.ORDER_SUCCESS, params: { orderId } });
+}
+
+export function trackDeleteProduct(productid: number ) {
+  gaEvent({ action: GA_FUNNEL_EVENTS.DELETE_PRODUCT, 
+  params: { id: productid} });
 }

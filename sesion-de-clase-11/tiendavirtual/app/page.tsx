@@ -16,6 +16,7 @@ import {
   trackLead,
   trackSale,
   trackPurchase,
+  trackDeleteProduct,
 } from '@/lib/ga-funnel';
 import PaginaProductos from '@/componentes/PaginaProductos';
 import PaginaClientes from '@/componentes/PaginaClientes';
@@ -121,7 +122,11 @@ export default function Home() {
               trackAddToCart(producto);
               carritoHook.agregarAlCarrito(producto);
             }}
-            quitarProducto={productosHook.eliminarProducto}
+            quitarProducto={(producto) => {
+              trackDeleteProduct(producto);
+              productosHook.eliminarProducto(producto);
+            }}
+            /*quitarProducto={productosHook.eliminarProducto}*/
             setMostrarModalProducto={productosHook.setMostrarProductoModal}
             setProductoSeleccionado={productosHook.setProductoSeleccionado}
           />
